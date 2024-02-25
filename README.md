@@ -50,3 +50,31 @@ git clone https://github.com/kiloMIA/femctf-python-tasks.git
 ```bash
 python test_vigenere.py
 ```
+
+# Challenge: Hash and Unzip for the Flag
+
+## Objective
+
+Your task is to implement a simple hashing function based on the Division-Remainder Method and use this hash to decrypt a password-protected zip file. The plaintext "EightOfMarch" must be hashed, and the resulting hash value will serve as the password to unlock the zip file containing the challenge flag. This task will test your ability to apply hashing concepts in a practical scenario and manipulate zip files programmatically in Python.
+
+## Key Requirements
+
+    Deterministic Output: Your hashing function must be deterministic, meaning the same input ("EightOfMarch") should always produce the same hash value.
+    Password Usage: The calculated hash value will be used as the password to unlock a provided zip file. The zip file contains a single text file with the challenge flag.
+
+## Guidelines for Implementation
+Hashing Function (division_remainder_hash):
+    Input: The plaintext string "EightOfMarch".
+    Process:
+        Convert each character of the input string to its ASCII value and sum these values.
+        Choose 101 as a prime number and calculate the remainder of the sum divided by this prime number. This remainder is your hash value.
+    Output: The hash value as an integer
+
+## Unlocking the Zip File:
+    Requirement: Use the hash value obtained from your hashing function as the password to unlock and extract the contents of the provided zip file.
+
+## Testing:
+- To test your code, simply write:  
+```bash
+python division_remainder_hash.py
+```
