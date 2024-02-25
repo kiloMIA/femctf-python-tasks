@@ -39,6 +39,12 @@ Example 3:
 - Input: text = "1234567890 !@#$%^&*()", keyword = "Digits"
 - Output: text = "1234567890 !@#$%^&*()"
 
+## Getting Started
+- Use this command to clone this repository to start working
+```bash
+git clone https://github.com/kiloMIA/femctf-python-tasks.git
+```
+
 ## Testing: 
 - To test your code, simply write:  
 ```bash
