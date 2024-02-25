@@ -1,15 +1,15 @@
-Challenge 1: The Vigenère Cipher for International Women's Day Wishes
+# Challenge 1: The Vigenère Cipher for International Women's Day Wishes
 
-Objective
+## Objective
 
 Your task is to implement two functions, encrypt_vigenere and decrypt_vigenere, which respectively encrypt and decrypt a plaintext message using the Vigenère cipher with a provided keyword. The key aspect of this cipher is polyalphabetic substitution, where each letter in the plaintext is shifted along the alphabet based on a corresponding letter in the keyword.
-Key Requirements
+## Key Requirements
 
     Alphabetic Sensitivity: Your functions should only process alphabetic characters (both uppercase and lowercase). All non-alphabetic characters, including numbers, spaces, punctuation, and symbols, must remain unchanged in the output.
     Case Preservation: The case of each alphabetic character must be preserved. Uppercase letters remain uppercase, and lowercase letters remain lowercase after encryption or decryption.
     Keyword Repetition: The keyword is repeated or truncated to match the length of the plaintext for encryption. For decryption, the same keyword is used to reverse the encryption process.
 
-Guidelines for Implementation
+## Guidelines for Implementation
 
     Encryption Function (encrypt_vigenere):
         Input: plaintext (string), keyword (string).
@@ -21,7 +21,7 @@ Guidelines for Implementation
         Process: Decrypt only the alphabetic characters of the ciphertext using the Vigenère cipher, leaving numbers and symbols unchanged.
         Output: The decrypted message (original plaintext) as a string.
 
-Special Considerations
+## Special Considerations
 
     When encountering non-alphabetic characters in the plaintext or ciphertext, your functions should include these characters in the output without any modification.
     The encryption and decryption processes should seamlessly handle texts of any length, ensuring that the keyword is appropriately repeated or truncated to align with the length of the alphabetic characters in the text.
@@ -39,8 +39,8 @@ Example 3:
 - Input: text = "1234567890 !@#$%^&*()", keyword = "Digits"
 - Output: text = "1234567890 !@#$%^&*()"
 
-Testing: 
+## Testing: 
 - To test your code, simply write:  
-```
+```bash
 python test_vigenere.py
 ```
