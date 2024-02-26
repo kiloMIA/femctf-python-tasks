@@ -1,3 +1,3 @@
 def division_remainder_hash(table_size=101):
-    input_string = "EightOfMarch"
+    input_string = "ClaraZetkin"
     print(input_string)
