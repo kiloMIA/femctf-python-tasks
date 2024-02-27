@@ -1,80 +1,51 @@
-# Challenge 1: The Vigenère Cipher for International Women's Day Wishes
-
-## Objective
-
-Your task is to implement two functions, encrypt_vigenere and decrypt_vigenere, which respectively encrypt and decrypt a plaintext message using the Vigenère cipher with a provided keyword. The key aspect of this cipher is polyalphabetic substitution, where each letter in the plaintext is shifted along the alphabet based on a corresponding letter in the keyword.
-## Key Requirements
-
-    Alphabetic Sensitivity: Your functions should only process alphabetic characters (both uppercase and lowercase). All non-alphabetic characters, including numbers, spaces, punctuation, and symbols, must remain unchanged in the output.
-    Case Preservation: The case of each alphabetic character must be preserved. Uppercase letters remain uppercase, and lowercase letters remain lowercase after encryption or decryption.
-    Keyword Repetition: The keyword is repeated or truncated to match the length of the plaintext for encryption. For decryption, the same keyword is used to reverse the encryption process.
-
-## Guidelines for Implementation
-
-### Encryption Function (encrypt_vigenere):
-
-    Input: Accept two inputs - the plaintext string to be encrypted and the keyword. Both should be strings.
-        plaintext: The message you wish to encrypt. It can contain alphabetic characters, numbers, spaces, punctuation, and symbols.
-        keyword: The word used to encrypt the plaintext. It should ideally be an alphabetic string, as non-alphabetic characters are not processed.
-
-    Process:
-        Prepare the Alphabet: Define an alphabet string containing all uppercase letters (A-Z). This will be used to find the index of each letter for the shift operation.
-        Normalize the Keyword: Ensure the keyword is of the same length as the plaintext. If it is shorter, repeat it until it matches the length of the plaintext. Only alphabetic characters in the plaintext count towards the length matching.
-        Encrypt Each Letter: For each alphabetic character in the plaintext, find its corresponding letter in the keyword. Use the position of the keyword letter in the alphabet as the number of positions to shift the plaintext letter.
-            If the plaintext character is not alphabetic (e.g., number, punctuation), leave it unchanged.
-            Preserve the case of each letter. Use the alphabet string for case conversion if needed.
-        Handle Alphabet Wraparound: Ensure that the encryption wraps around the alphabet. For example, shifting 'Z' by 1 results in 'A'.
-
-    Output: Return the encrypted message as a string, maintaining the original case and leaving non-alphabetic characters unchanged.
-
-### Decryption Function (decrypt_vigenere):
-
-    Input: Accept two inputs - the ciphertext string to be decrypted and the same keyword used for encryption.
-        ciphertext: The encrypted message.
-        keyword: The word used to decrypt the ciphertext, identical to the one used for encryption.
-
-    Process:
-        Prepare the Alphabet: Use the same alphabet string as in the encryption process.
-        Normalize the Keyword: Adjust the keyword to match the length of the ciphertext, considering only alphabetic characters.
-        Decrypt Each Letter: For each alphabetic character in the ciphertext, reverse the encryption process using the keyword's corresponding letter position to shift back to the original letter.
-            Non-alphabetic characters should remain unchanged.
-            Preserve the case of each alphabetic character.
-        Handle Alphabet Wraparound: Ensure that the decryption correctly wraps around the alphabet. For example, shifting 'A' back by 1 results in 'Z'.
-
-    Output: Return the decrypted message as a string, with the case preserved and non-alphabetic characters left as is.
-
-## Special Notes:
-
-    Case Sensitivity: The functions should accurately handle both uppercase and lowercase letters, ensuring that the case of the plaintext is preserved in the ciphertext and vice versa.
-    Non-Alphabetic Characters: Spaces, numbers, punctuation, and symbols must be ignored by the encryption and decryption processes but should be included in the final output in their original positions.
-
-
-
-Example 1:
-- Input: text = "Happy Women's Day!", keyword = "Flowers"
-- Output: "Mldlc Ngrpb'o Hrq!"
-
-Example 2:
-- Input: text = "Celebrate women's achievements!", keyword = "March"
-- Output: "Oecgidakg damvp'z mcyklhedgufs!"
-
-Example 3:
-- Input: text = "1234567890 !@#$%^&*()", keyword = "Digits"
-- Output: text = "1234567890 !@#$%^&*()"
-
-## Getting Started
+# Getting Started
 - Use this command to clone this repository to start working
 ```bash
 git clone https://github.com/kiloMIA/femctf-python-tasks.git
 ```
+# Challenge 1: Decrypting Caesar Cipher without a Known Shift
+## Objective
+
+Your task is to decrypt a ciphertext that has been encrypted using the Caesar cipher with an unknown shift amount. The challenge is to write a Python program capable of determining the correct shift amount and decrypting the ciphertext to reveal the original message. The decrypted message will contain a flag formatted as flag{your_decrypted_message_here}.
+## Key Requirements
+
+    Shift Detection: Your program must implement a method to accurately determine the shift amount used in the encryption process.
+    Alphabetic Sensitivity: Ensure your decryption process affects only alphabetic characters (both uppercase and lowercase) as well as the special characters { and }, meaning that alphabet looks like this:
+    "abcdefghijklmnopqrstuvwxyz}{"
+    
+    All other characters should remain unchanged.
+    Case Preservation: The case of each alphabetic character must be preserved in the decrypted message.
+
+## Guidelines for Implementation
+### Shift Detection and Decryption:
+    The Caesar cipher is a substitution cipher that shifts characters in the plaintext a certain number of steps down or up the alphabet. In decryption, the process is reversed by shifting the characters back by the same number of steps used for encryption.
+
+To decrypt a message encrypted with the Caesar cipher:
+
+    Determine the Shift: First, you must identify the number of positions each character has been shifted. Without knowing the shift amount, you can:
+        Use frequency analysis, based on the assumption that certain letters appear more frequently in the plaintext.
+        Brute force through all possible shifts (1 through 27, including { and }) and analyze the readability of the output.
+    Shift Characters Back: Once the shift amount is known, each character in the ciphertext is shifted back by this amount in the modified alphabet, including handling special characters { and }.
+    
+    Input:
+        ciphertext: Ybjufbqjycbq{ Mca!ub’i Tqo, cfywyhbq{{og }bcmb qi Ybjuhfbqjycbgq{ Mcf}ybw Mcaub’i Tqo, yi su{uhrfqjutg qfckbt jxu mcf{t ulufo ouqf cb ntiohmqop{wnuizkpg.
+    Process:
+    Detect Shift Amount: Develop a strategy to determine the shift amount used to encrypt the message. Consider using frequency analysis or brute-forcing through all possible shifts (1 through 27, including the special characters { and }).
+    Decrypt the Ciphertext: After identifying the shift amount, decrypt the ciphertext by shifting each alphabetic character and the special characters {, } back by the determined amount.
+        Preserve the case of each letter.
+        Non-alphabetic characters (except for { and }) remain unchanged.
+        Ensure correct handling of the alphabet and special character wraparound.
+
+Output: The decrypted message, preserving the case and including non-alphabetic characters and special characters {, } in their original positions.
+
 
 ## Testing: 
 - To test your code, simply write:  
 ```bash
-python test_vigenere.py
+python caesar.py
 ```
 
-# Challenge: Hash and Unzip for the Flag
+# Challenge 2: Hash and Unzip for the Flag
 
 ## Objective
 
@@ -96,6 +67,11 @@ Hashing Function (division_remainder_hash):
 ## Unlocking the Zip File:
     Requirement: Use the hash value obtained from your hashing function as the password to unlock and extract the contents of the provided zip file.
 
+## Testing: 
+- To test your code, simply write:  
+```bash
+python division_remainder_hash.py
+```
 ## Testing:
 - To test your code, simply write:  
 ```bash
