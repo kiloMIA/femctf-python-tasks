@@ -73,8 +73,4 @@ Requirement: Use the hash value obtained from your hashing function as the passw
 ```bash
 python division_remainder_hash.py
 ```
-## Testing:
-- To test your code, simply write:  
-```bash
-python division_remainder_hash.py
-```
+
